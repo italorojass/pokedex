@@ -7,8 +7,7 @@ https://pokeapi.co/
 
 Y la segunda en donde encontrarás las imágenes de los
 pokemon
-https://raw.githubusercontent.com/PokeAPI/sprites/mast
-er/sprites/pokemon/{id-pokemon}.png
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id-pokemon}.png
 
 La idea es que al inicio se descarguen los primeros 150
 pokemon y la aplicación te muestre el listado y permita
