@@ -22,4 +22,15 @@ Dentro del detalle de cada pokémon debe ir
 Finalmente deberás generar una serie de submenús (a
 lo menos 1) a tu elección, la api te permite navegar a
 diferentes lugares.
-# pokedex
+
+Consideraciones:
+
+- Almacenar localmente la información (por lo menos
+los nombres de los primeros 151 pokémon)
+- Poder realizar búsquedas sin conexión
+- Usar lo último que conozcas en la aplicación,
+queremos que te luzcas con este desafío.
+- Utilizar TDD, MV-Algo a tu elección, Clean
+- Utilizar inyección de dependencias
+- Utilizar control de versiones, queremos ver el
+progreso
