@@ -27,6 +27,12 @@ body{
   background-color: rgb(27, 52, 97);
     color: #fff;
 }
+
+.bg-blueType{
+  background-color: #94DBEE;
+    color: #000;
+}
+
 .tableColor-blue{
   color: #fff;
 }
@@ -36,14 +42,25 @@ body{
     color: #fff;
 }
 
+.bg-purpleType{
+  background-color: #C183C1;
+    color: #fff;
+}
+
 .tableColor-purple{
   color: #fff;
+}
+
+.bg-redType{
+  background-color: rgb(195, 23, 54);
+    color: #000;
 }
 
 .bg-red{
   background-color: #EE8130;
     color: #000;
 }
+
 
 .tableColor-red{
   color: rgb(28, 29, 29);
@@ -52,6 +69,11 @@ body{
 .bg-brown{
   background-color: rgb(101, 67, 33);
     color: rgb(233, 220, 220);
+}
+
+.bg-brownType{
+  background-color: #C96;
+    color: rgb(24, 23, 23);
 }
 
 .tableColor-brown{
@@ -63,6 +85,12 @@ body{
   background-color: rgb(53, 82, 60);
     color: #fff;
 }
+
+.bg-greenType{
+  background-color: #64D364;
+    color: #000;
+}
+
 .tableColor-green{
   color: #fff;
 }
@@ -72,8 +100,18 @@ body{
     color: #fff;
 }
 
+.bg-grayType{
+  background-color: #BBB;
+    color: #000;
+}
+
 .bg-yellow{
   background-color: rgb(228, 205, 5);
+    color: #000;
+}
+
+.bg-yellowType{
+  background-color: #ff9;
     color: #000;
 }
 
@@ -86,6 +124,18 @@ body{
     color: #000;
 }
 
+.bg-pinkType{
+  background-color: #ec9eaf;
+    color: #000;
+}
+
+.bg-pinkType2{
+  background-color: #ec9eaf;
+    color: #000;
+}
+
+
+
 .tableColor-pink{
   color: rgb(53, 52, 52);
 }
@@ -95,6 +145,43 @@ body{
   color: #000;
 }
 
+.bg-whiteType{
+  background-color: rgb(15, 15, 15);
+  color: #fff;
+}
+
+.bg-whiteType2{
+  background-color: rgb(175, 166, 166);
+  color: rgb(17, 16, 16);
+}
+
 .tableColor-white{
   color: #000;
 }
+
+.ng-autocomplete {
+  width: 100% !important;
+}
+
+
+.bg-hp{
+  background-color: #26a8cf;
+}
+.bg-attack{
+  background-color: rgb(195, 23, 54);
+}
+
+.bg-defense{
+  background-color: #0d6efd;
+}
+.bg-special-attack{
+  background-color: #ffc107;
+}
+
+.bg-special-defense{
+  background-color: #b10dfd;
+}
+.bg-speed{
+  background-color: rgb(52, 195, 23);
+}
+

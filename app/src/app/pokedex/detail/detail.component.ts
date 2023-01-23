@@ -32,10 +32,36 @@ export class DetailComponent implements OnInit {
   idPokemon: number;
 
   ngOnInit(): void {
+    this.initFx();
+  }
 
-    this.initFx()
-
-
+  dictEstadisticas=[{
+    stat: 'hp',
+    trad : 'Vida'
+  },
+  {
+    stat: 'attack',
+    trad : 'Ataque'
+  },
+  {
+    stat: 'defense',
+    trad : 'Defensa'
+  },
+  {
+    stat: 'special-attack',
+    trad : 'Ataque especial'
+  },
+  {
+    stat: 'special-defense',
+    trad : 'Defensa especial'
+  },
+  {
+    stat: 'speed',
+    trad : 'Velocidad'
+  }]
+  statSpanish(stat:string){
+    const findDict = this.dictEstadisticas.find(x=>x.stat==stat);
+    return findDict?.trad;
   }
 
   initFx(){
@@ -53,7 +79,7 @@ export class DetailComponent implements OnInit {
 
   getData(id: number) {
     this.pokeSv.getPokemonsForId(id).subscribe((r: any) => {
-      //console.log('datos pokemon', r);
+      console.log('datos pokemon', r);
       this.dataPokedex = r;
 
     })
@@ -61,7 +87,7 @@ export class DetailComponent implements OnInit {
   dataSpecies: any;
   getSpecies(id: number) {
     this.pokeSv.getPokemonForSpecies(id).subscribe(r => {
-      //console.log('species', r);
+      console.log('species', r);
       this.dataSpecies = r;
     })
   }
