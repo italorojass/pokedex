@@ -1,0 +1,202 @@
+<app-autocomplete></app-autocomplete>
+
+<div class="row mt-2" *ngIf="dataSpecies && dataPokedex && locations">
+  <div class="card bg-{{dataSpecies.color.name}}">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{idPokemon}}.png"
+            class="img-fluid" alt="PokemonIMG">
+
+          <table class="table tableColor-{{dataSpecies.color.name}}">
+            <tr>
+              <th>
+                Nombre
+              </th>
+              <th>
+                Base
+              </th>
+
+            </tr>
+            <tr *ngFor="let item of dataPokedex.stats">
+              <td>
+                {{item.stat.name.toUpperCase()}}
+
+              </td>
+              <td>
+
+                {{item.base_stat}}
+              </td>
+
+
+            </tr>
+            <tr>
+              <td>WEIGHT</td>
+              <td>{{dataPokedex.weight}}</td>
+            </tr>
+          </table>
+
+
+        </div>
+
+        <div class="col-6" *ngIf="dataPokedex">
+          <h5 class="card-title">
+            <img src="assets/img/pokemon-ball1.png" alt="PokemonIMG" height="30"> #{{idPokemon}}
+            {{dataPokedex.name.charAt(0).toUpperCase() + dataPokedex.name.slice(1)}}
+          </h5>
+          <hr>
+          <table class="table table-borderless tableColor-{{dataSpecies.color.name}}">
+            <tr>
+              <td>
+                Tipo
+              </td>
+              <td><span class="badge  rounded-pill border me-2 tableColor-{{dataSpecies.color.name}}"
+                  *ngFor="let tipo of dataPokedex.types">{{tipo.type.name.toUpperCase()}}</span></td>
+            </tr>
+            <tr *ngIf="dataSpecies.evolves_from_species">
+              <td>
+                Evolución
+              </td>
+              <td>
+                <span
+                  class="badge rounded-pill  border me-2 tableColor-{{dataSpecies.color.name}}">{{dataSpecies.evolves_from_species.name}}</span>
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Donde encontrar
+              </td>
+              <td>
+
+                <span class="badge  rounded-pill  border me-2 tableColor-{{dataSpecies.color.name}}"
+                  *ngFor="let tt of locations.names">{{tt.name}}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Habilidades</td>
+              <td>
+
+                <label class="badge rounded-pill border me-2 tableColor-{{dataSpecies.color.name}}"
+                  *ngFor="let item of dataPokedex.abilities">{{item.ability.name}}</label>
+              </td>
+            </tr>
+            <tr>
+              <td>Habitat</td>
+              <td>
+
+                <label
+                  class="badge rounded-pill border me-2 tableColor-{{dataSpecies.color.name}}">{{dataSpecies.habitat.name}}</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Ataques
+              </td>
+
+            </tr>
+            <tr>
+              <td colspan="2">
+
+                <a class="mb-2" *ngFor="let item of dataPokedex.moves" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" style="cursor: pointer;" (click)="detailMove(item)">
+
+                  <span class="badge  border me-2 tableColor-{{dataSpecies.color.name}}">{{item.move.name}}</span></a>
+              </td>
+            </tr>
+
+
+          </table>
+
+
+          <hr>
+          <table>
+
+          </table>
+
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+<div class="row mt-2">
+  <button class="btn btn-outline-dark " [routerLink]="['/']">
+    <i class="fa fa-arrow-left"></i> Volver</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-{{dataSpecies.color.name}} tableColor-{{dataSpecies.color.name}}" *ngIf="detailMovement">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ataque: {{detailMovement.names[5].name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <table class="table table-striped  tableColor-{{dataSpecies.color.name}}">
+          <tr>
+
+            <td>
+              Tipo
+            </td>
+            <th>{{detailMovement.type ? detailMovement.type.name : '-'}}</th>
+          </tr>
+          <tr>
+            <td>
+              Poder
+            </td>
+            <th>{{detailMovement.power ? detailMovement.power : '-'}}</th>
+          </tr>
+          <tr>
+            <td>
+              Puntos de poder
+            </td>
+            <th>{{detailMovement.pp ? detailMovement.pp : '-'}}</th>
+          </tr>
+          <tr>
+
+            <td>
+              Precisión
+            </td>
+            <th>{{detailMovement.accuracy ? detailMovement.accuracy : '-'}}</th>
+          <tr>
+            <td>
+              Tipo daño
+            </td>
+            <th>{{detailMovement.damage_class ? detailMovement.damage_class.name : '-'}}</th>
+          </tr>
+
+          <tr *ngIf="detailMovement.contest_combos">
+            <td>
+              Counter combos
+            </td>
+            <th >
+              <ng-container *ngIf="detailMovement.contest_combos">
+                <small *ngFor="let item of detailMovement.contest_combos.normal.use_after">
+             {{item.name}}
+            </small>
+            <small *ngFor="let item of detailMovement.contest_combos.super.use_after">
+              Super: {{item.name}}
+            </small>
+              </ng-container>
+
+            </th>
+          </tr>
+
+        </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cerrar</button>
+
+      </div>
+    </div>
+  </div>
+</div>

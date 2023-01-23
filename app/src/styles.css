@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+body{
+  background-color: rgb(223, 224, 215);
+  background-image: url("/assets/img/pokedex3.jpg");
+}
+
+.bg-black{
+  background-color: rgb(4, 0, 0);
+  color: #fff;
+}
+
+.bg-normal{
+  background-color: '#A8A77A',
+}
+
+.bg-water{
+  background-color: '#6390F0',
+}
+
+.tableColor-back{
+  color: #fff;
+}
+
+.bg-blue{
+  background-color: rgb(27, 52, 97);
+    color: #fff;
+}
+.tableColor-blue{
+  color: #fff;
+}
+
+.bg-purple{
+  background-color: rgb(97, 38, 85);
+    color: #fff;
+}
+
+.tableColor-purple{
+  color: #fff;
+}
+
+.bg-red{
+  background-color: #EE8130;
+    color: #000;
+}
+
+.tableColor-red{
+  color: rgb(28, 29, 29);
+}
+
+.bg-brown{
+  background-color: rgb(101, 67, 33);
+    color: rgb(233, 220, 220);
+}
+
+.tableColor-brown{
+  color: rgb(233, 220, 220);
+}
+
+
+.bg-green{
+  background-color: rgb(53, 82, 60);
+    color: #fff;
+}
+.tableColor-green{
+  color: #fff;
+}
+
+.bg-gray{
+  background-color: rgb(98, 100, 102);
+    color: #fff;
+}
+
+.bg-yellow{
+  background-color: rgb(228, 205, 5);
+    color: #000;
+}
+
+.tableColor-yellow{
+  color: rgb(90, 86, 86);
+}
+
+.bg-pink{
+  background-color: rgb(231, 179, 167);
+    color: #000;
+}
+
+.tableColor-pink{
+  color: rgb(53, 52, 52);
+}
+
+.bg-white{
+  background-color: rgb(250, 244, 238);
+  color: #000;
+}
+
+.tableColor-white{
+  color: #000;
+}

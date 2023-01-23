@@ -1,0 +1,78 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+import { PokeApiService } from './../services/poke-api.service';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-pokedex',
+  templateUrl: './pokedex.component.html',
+  styleUrls: ['./pokedex.component.css']
+})
+export class PokedexComponent implements OnInit {
+
+
+  constructor(private pokeService : PokeApiService) { }
+
+  ngOnInit(): void {
+    this.getPokemons(this.limit,0);
+  }
+
+  pokemons : Array<any>=[];
+  paginateNext :any;
+  paginatePrev :any;
+  cantidad : number=150;
+  limit:number=15;
+
+  getPokemons(limit:number,offset:number){
+
+
+
+    this.pokeService.getPokemons(limit,offset).subscribe((r:any)=>{
+      //console.log(r);
+     // this.cantidad=r['count'];
+      this.paginateNext = r['next']
+      this.paginatePrev =r['previous'];
+      this.fillPokemons(r['results']);
+    })
+  }
+
+  fillPokemons(array:Array<any>){
+    this.pokemons=[];
+    array.forEach((element:any) => {
+      const id = element.url.split('pokemon/')[1].replace('/','');
+      this.pokeService.getPokemonForSpecies(id).subscribe((x:any)=>{
+        const newObj = {
+          ...element,
+          ...x
+        }
+        this.pokemons.push(newObj);
+
+      })
+
+    });
+    //console.log(this.pokemons);
+  }
+
+
+  paginator(href:string){
+
+    console.log('url',href);
+    this.pokeService.paginarPokemons(href).subscribe((r:any)=>{
+      //console.log('response paginate',r);
+      this.paginateNext = r['next']
+      this.paginatePrev =r['previous'];
+      this.fillPokemons(r['results']);
+
+      const limit= r['next'].split('offset=')[1];
+      const format= limit.split('limit=')[0];
+      //console.log(limit,format);
+      this.limit = format.replace('&','');
+
+
+    })
+  }
+
+
+
+}

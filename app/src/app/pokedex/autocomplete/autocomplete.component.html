@@ -1,0 +1,33 @@
+<div class="row height d-flex justify-content-center align-items-center">
+
+  <div class="col-md-6">
+
+    <!--   <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Buscar pokemon" id="search" aria-label="Buscar pokemon" aria-describedby="buscaPokemon" #SearchInput (click)="showSearches = true">
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </div>
+    </div> -->
+    <form [formGroup]="searchForm">
+      <div class="ng-autocomplete">
+        <ng-autocomplete [data]="cars" [searchKeyword]="keyword" placeholder="Busca un pokemon"
+          (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' formControlName="inputSearch"
+          [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name">
+
+          </a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+          <div>Sin coincidencias</div>
+        </ng-template>
+      </div>
+    </form>
+
+
+  </div>
+
+</div>

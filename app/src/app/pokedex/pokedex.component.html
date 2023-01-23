@@ -1,0 +1,71 @@
+
+
+
+<app-autocomplete></app-autocomplete>
+
+<div class="row mt-2 mb-2">
+  <div class="col">
+    <div class="d-flex justify-content-center">
+      <div class="">
+        <button class="btn btn-success me-2 " *ngIf="paginatePrev" name="{{paginatePrev}}" (click)="paginator(paginatePrev)">
+          <i class="fa fa-caret-left"></i> </button>
+
+          <label class="mr-1 me-2"><strong>{{limit}}</strong> de <strong>{{cantidad}}</strong> </label>
+
+        <button class="btn btn-success " *ngIf="paginateNext" name="{{paginateNext}}" (click)="paginator(paginateNext)">
+           <i class="fa fa-caret-right"></i></button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div *ngFor="let item of pokemons; let i = index" class="col-4">
+
+    <div class="card mb-3 bg-{{item.color.name}}" [routerLink]="['/pokemon/detail',item.url.split('pokemon/')[1].replace('/','')]"
+       style="cursor: pointer;">
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-7 col-sm-8">
+            <h3 class="card-title">{{item.name | titlecase}}</h3>
+
+            <span class="badge border rounded-pill me-1 bg-{{item.color.name}} ">
+             {{item.habitat.name | titlecase}}
+            </span>
+            <span class="badge border bg-{{item.color.name}} rounded-pill me-1 ">
+              {{item.shape.name | titlecase}}
+            </span>
+
+          </div>
+          <div class="col-5 col-sm-4">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{item.url.split('pokemon/')[1].replace('/','')}}.png"
+              class="img-fluid" alt="...">
+
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="float-end">
+
+              <span class="badge bg-{{item.color.name}}"> #{{i+1}}</span>
+             </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
