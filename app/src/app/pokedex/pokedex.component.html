@@ -34,13 +34,19 @@
           <div class="col-7 col-sm-8">
             <h3 class="card-title">{{item.name | titlecase}}</h3>
 
-            <span class="badge border rounded-pill me-1 bg-{{item.color.name}} ">
-             {{item.habitat.name | titlecase}}
-            </span>
-            <span class="badge border bg-{{item.color.name}} rounded-pill me-1 ">
-              {{item.shape.name | titlecase}}
-            </span>
+           <!--  <span class="badge border rounded-pill me-1 bg-{{item.color.name}} ">
+             HABITAT: {{item.habitat.name | titlecase}}
+            </span> -->
 
+           <!--  <h2>
+              <span class="badge bg-{{item.color.name}}Type mb-2 me-2"
+                *ngFor="let tipo of item.types">{{tipo.type.name.toUpperCase()}}</span>
+            </h2> -->
+
+            <h5 *ngIf="dataPokedex">
+              <span class="badge bg-{{item.color.name}}Type mb-2 me-2"
+                *ngFor="let tipo of item.types">{{tipo.type.name.toUpperCase()}}</span>
+            </h5>
           </div>
           <div class="col-5 col-sm-4">
             <img

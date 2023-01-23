@@ -36,22 +36,33 @@ export class PokedexComponent implements OnInit {
       this.fillPokemons(r['results']);
     })
   }
-
+  dataPokedex:any;
   fillPokemons(array:Array<any>){
     this.pokemons=[];
     array.forEach((element:any) => {
       const id = element.url.split('pokemon/')[1].replace('/','');
-      this.pokeService.getPokemonForSpecies(id).subscribe((x:any)=>{
-        const newObj = {
-          ...element,
-          ...x
-        }
-        this.pokemons.push(newObj);
 
-      })
+      this.pokeService.getPokemonForSpecies(id).subscribe((x:any)=>{
+       // console.log(x);
+        this.pokeService.getPokemonsForId(id).subscribe((r: any) => {
+          //console.log('datos pokemon', r);
+          this.dataPokedex = r;
+          const newObj = {
+            ...element,
+            ...x,
+            ...r
+          }
+          this.pokemons.push(newObj);
+        })
+
+
+
+      });
+
 
     });
-    //console.log(this.pokemons);
+
+    console.log(this.pokemons);
   }
 
 
