@@ -1,0 +1,7 @@
+
+/.DS_Store
+
+/app/node_modules/*
+/app/.firebase/*
+/app/.angular/*
+/app/dist/*
