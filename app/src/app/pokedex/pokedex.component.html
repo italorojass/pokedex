@@ -24,7 +24,7 @@
 </div>
 
 <div class="row">
-  <div *ngFor="let item of pokemons; let i = index" class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+  <div *ngFor="let item of pokemons; let i = index" class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
 
     <div class="card mb-3 bg-{{item.color.name}}" [routerLink]="['/pokemon/detail',item.url.split('pokemon/')[1].replace('/','')]"
        style="cursor: pointer;">
