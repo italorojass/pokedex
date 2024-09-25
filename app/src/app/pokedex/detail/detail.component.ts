@@ -71,17 +71,36 @@ export class DetailComponent implements OnInit {
       this.getData(this.idPokemon);
     this.getSpecies(this.idPokemon);
     this.getLocation(this.idPokemon);
+    this.getEvolutionChain(params['id']);
     });
 
   }
 
   dataPokedex: any;
-
+  totalStat=0;
   getData(id: number) {
     this.pokeSv.getPokemonsForId(id).subscribe((r: any) => {
       console.log('datos pokemon', r);
       this.dataPokedex = r;
 
+      this.dataPokedex.stats.forEach((element:any) => {
+        //console.log(element.base_stat);
+        this.totalStat += Number((element.base_stat));
+      });
+
+    })
+  }
+
+  nextUrl(url:string){
+    this.pokeSv.paginarPokemons(url).subscribe((r:any)=>{
+      console.log('response formas',r);
+      this.dataPokedex=r;
+      this.idPokemon = r['id'];
+    })
+  }
+  getEvolutionChain(id:number){
+    this.pokeSv.getPokemonEvolutionChain(id).subscribe(r=>{
+      console.log('evolution',r);
     })
   }
   dataSpecies: any;
@@ -89,6 +108,9 @@ export class DetailComponent implements OnInit {
     this.pokeSv.getPokemonForSpecies(id).subscribe(r => {
       console.log('species', r);
       this.dataSpecies = r;
+
+
+
     })
   }
 
