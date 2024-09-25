@@ -18,7 +18,6 @@ import { PaginatorComponent } from './shared/components/paginator/paginator.comp
 import { AutocompleteComponent } from './pokedex/autocomplete/autocomplete.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { LoadDataComponent } from './load-data/load-data.component';
-import { NgChartsModule } from 'ng2-charts';
 import { DetailMoveComponent } from './pokedex/detail/detail-move/detail-move.component';
 
 @NgModule({
@@ -40,8 +39,8 @@ import { DetailMoveComponent } from './pokedex/detail/detail-move/detail-move.co
     HttpClientModule,
     ReactiveFormsModule,
     AutocompleteLibModule,
-    NgChartsModule,
-    NgxBootstrapIconsModule.pick(allIcons)
+    NgxBootstrapIconsModule.pick(allIcons),
+
 
   ],
   providers: [

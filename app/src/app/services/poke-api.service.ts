@@ -27,6 +27,9 @@ export class PokeApiService {
     return this.http.get(`${environment.pokeapi}pokemon-species/${id}`);
   }
 
+  getPokemonEvolutionChain(id:number){
+    return this.http.get(`${environment.pokeapi}evolution-chain/${id}`);
+  }
 
 
   getAbility(id:number){

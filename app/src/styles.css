@@ -1,10 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-
-body{
-  background-color: rgb(223, 224, 215);
-  background-image: url("/assets/img/pokedex3.jpg");
+:root {
+  --blue: #467fcf;
+  --indigo: #6574cd;
+  --purple: #a55eea;
+  --pink: #f66d9b;
+  --red: #cd201f;
+  --orange: #fd9644;
+  --yellow: #f1c40f;
+  --green: #5eba00;
+  --teal: #2bcbba;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #868e96;
+  --gray-dark: #343a40;
+  --azure: #45aaf2;
+  --lime: #7bd235;
+  --primary: #467fcf;
+  --secondary: #868e96;
+  --success: #5eba00;
+  --info: #45aaf2;
+  --warning: #f1c40f;
+  --danger: #cd201f;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1280px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+html body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  background: #effdff; background-image: url("/assets/img/pokedex3.jpg");
+}
+
 
 .bg-black{
   background-color: rgb(4, 0, 0);
@@ -185,3 +224,119 @@ body{
   background-color: rgb(52, 195, 23);
 }
 
+
+
+.bg-normal-type{
+  background: #A0A29F;
+  box-shadow: 0 0 20px #A0A29F;
+}
+.bg-ghost-type{
+  background: #5F6DBC;
+    box-shadow: 0 0 20px #5F6DBC;
+}
+
+.bg-poison-type{
+  background: #B763CF;
+  box-shadow: 0 0 20px #B763CF;
+}
+
+.bg-psychic-type{
+  background: #FA8581;
+  box-shadow: 0 0 20px #FA8581;
+}
+
+.bg-grass-type{
+  background: #5FBD58;
+    box-shadow: 0 0 20px #5FBD58;
+}
+
+.bg-green-type{
+  background: #5FBD58;
+    box-shadow: 0 0 20px #5FBD58;
+}
+
+.bg-green-form{
+  background: #5FBD58;
+    box-shadow: 0 0 20px #5FBD58;
+}
+
+
+.bg-normal-ability{
+  background: #12460e;
+    box-shadow: 0 0 20px #12460e;
+}
+
+.bg-bug-type{
+  background: #92BC2C;
+  box-shadow: 0 0 20px #92BC2C;
+}
+
+.bg-fire-type{
+  background: #FBA54C;
+    box-shadow: 0 0 20px #FBA54C;
+}
+
+.bg-dragon-type{
+  background: #0C69C8;
+  box-shadow: 0 0 20px #0C69C8;
+}
+
+.bg-water-type{
+  background: #539DDF;
+    box-shadow: 0 0 20px #539DDF;
+}
+
+.bg-blue-type{
+  background: #539DDF;
+    box-shadow: 0 0 20px #539DDF;
+}
+
+
+.bg-steel-type{
+  background: #5695A3;
+  box-shadow: 0 0 20px #5695A3;
+}
+
+.bg-flying-type{
+  background: #A1BBEC;
+    box-shadow: 0 0 20px #A1BBEC;
+}
+
+.bg-dark-type{
+  background: #595761;
+  box-shadow: 0 0 20px #595761;
+}
+
+.bg-electric-type{
+  background-color: #5c4b18;
+}
+
+.bg-fairy-type{
+  background: #EE90E6;
+    box-shadow: 0 0 20px #EE90E6;
+}
+
+.bg-ground-type{
+  background: #DA7C4D;
+    box-shadow: 0 0 20px #DA7C4D;
+}
+
+.bg-rock-type{
+  background: #C9BB8A;
+  box-shadow: 0 0 20px #C9BB8A;
+}
+
+.bg-fighting-type{
+  background: #D3425F;
+    box-shadow: 0 0 20px #D3425F;
+}
+
+.bg-ice-type{
+  background: #75D0C1;
+  box-shadow: 0 0 20px #75D0C1;
+}
+
+.table1{
+  padding: 0.5rem 0.5rem;
+
+}

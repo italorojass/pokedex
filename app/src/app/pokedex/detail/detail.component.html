@@ -1,133 +1,165 @@
-<app-autocomplete></app-autocomplete>
+<div class="container-fluid">
+  <div class="row mt-2">
+    <div class="col">
+      <button class="btn btn-outline-dark " [routerLink]="['/']">
+        <i class="fa fa-arrow-left"></i> Volver</button>
+    </div>
 
-<div class="row mt-2" *ngIf="dataSpecies && dataPokedex && locations">
-  <div class="card bg-{{dataSpecies.color.name}}">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-8 ">
-          <h5 class="card-title">
-            <img src="assets/img/pokemon-ball1.png" alt="PokemonIMG" height="30"> #{{idPokemon}}
-            {{dataPokedex.name.charAt(0).toUpperCase() + dataPokedex.name.slice(1)}}
-          </h5>
-          <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{idPokemon}}.png"
-            class="img-fluid" alt="PokemonIMG">
-          <div class="d-flex justify-content-center">
-            <h2>
-              <span class="badge bg-{{dataSpecies.color.name}}Type mb-2 me-2"
-                *ngFor="let tipo of dataPokedex.types">{{tipo.type.name.toUpperCase()}}</span>
-            </h2>
+  </div>
 
-          </div>
+  <div class="row mt-2" *ngIf="dataSpecies && dataPokedex && locations">
+    <div class="card bg-{{dataSpecies.color.name}}">
+      <div class="card-body">
 
-          <div class="d-flex justify-content-center">
-            <h5>
-              <span class="badge bg-{{dataSpecies.color.name}}Type2 me-2"><i class="fa fa-arrows-v" aria-hidden="true"></i> Altura : {{dataPokedex.height}}</span>
-            </h5>
-            <h5>
-              <span class="badge bg-{{dataSpecies.color.name}}Type2"><i class="fa fa-paw" aria-hidden="true"></i> Peso : {{dataPokedex.weight}}kg</span>
-            </h5>
-          </div>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="table d-flex justify-content-center table-borderless">
+              <table class="bg-{{dataSpecies.color.name}}">
+                <tr>
+                  <th>ID</th>
+                  <td>#{{idPokemon}} </td>
+                </tr>
+                <tr>
+                  <th>Peso</th>
+                  <td>{{dataPokedex.weight}} kg</td>
+                </tr>
+                <tr>
+                  <th>Altura</th>
+                  <td>{{dataPokedex.height}}m</td>
+                </tr>
+                <tr>
+                  <th>Tipo</th>
+                  <td> <span class="badge bg-{{tipo.type.name}}-type mt-2 mb-2 me-2"
+                      *ngFor="let tipo of dataPokedex.types"><img src="assets/svg/{{tipo.type.name}}.svg"
+                        alt="PokemonIMG" height="20">
+                      {{tipo.type.name.toUpperCase()}}</span></td>
+                </tr>
+                <tr>
+                  <th>Habilidades</th>
+                  <td>
+                    <ng-container *ngFor="let tipo of dataPokedex.abilities">
+                      <span class="badge bg-normal-ability mt-2 mb-2 me-2" style="cursor: pointer;"  >
+                        {{tipo.ability.name.toUpperCase()}}</span>
+                    </ng-container>
 
+                  </td>
+                </tr>
+                <tr>
+                  <th>Formas</th>
+                  <td>
+                    <ng-container >
+                      <span *ngFor="let item of dataSpecies.varieties" class="badge bg-{{dataSpecies.color.name}}-form mt-2 mb-2 me-2" (click)="nextUrl(item.pokemon.url)" style="cursor: pointer;">
+                        {{item.pokemon.name.replace('-',' ').toUpperCase()}}
+                      </span>
+                    </ng-container>
 
-          <div *ngFor="let item of dataPokedex.stats">
-            <strong class="text-title">{{statSpanish(item.stat.name)}}: {{item.base_stat}}</strong>
-            <div class="progress">
-              <div class="progress-bar-animated progress-bar-striped bg-{{item.stat.name}} " role="progressbar"
-                [style.width.%]="item.base_stat" [attr.aria-valuenow]="item.base_stat" aria-valuemin="0"
-                aria-valuemax="1000"></div>
+                  </td>
+                </tr>
+              </table>
             </div>
+
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="row">
+              <div class="col-12 ">
+                <h1 class="card-title text-center ">
+
+                  {{dataPokedex.name.toUpperCase()}}
+
+                </h1>
+                <div class="text-center">
+                  <span class="badge bg-{{dataSpecies.color.name}}-type mt-2 mb-2 me-2">
+
+                    {{dataSpecies.genera[5].genus.toUpperCase()}}</span>
+                </div>
+
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{idPokemon}}.png"
+                  class="img-fluid content-center" alt="PokemonIMG">
+              </div>
+            </div>
+
           </div>
 
 
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="row" *ngFor="let item of dataPokedex.stats">
+
+              <div class="table1 bg-{{dataSpecies.color.name}}">
+                <div class="col ">{{statSpanish(item.stat.name)}}</div>
+                <div class="col">
+                  <div class="progress">
+                    <div
+                      class="progress-bar progress-bar-animated progress-bar-striped text-title bg-{{item.stat.name}} text-end"
+                      role="progressbar" style="font-size: 1rem" [style.width.%]="item.base_stat"
+                      [attr.aria-valuenow]="item.base_stat" aria-valuemin="0" aria-valuemax="1000"><strong>
+                        {{item.base_stat}}</strong></div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-12">
+                Total<strong> {{totalStat}}</strong>
+              </div>
+
+            </div>
+
+
+            <!--  <ng-container *ngFor="let item of dataPokedex.stats">
+              <strong class="text-title">{{statSpanish(item.stat.name)}}</strong>
+              <div class="progress">
+                <div class="progress-bar progress-bar-animated text-title progress-bar-striped bg-{{item.stat.name}} text-end" role="progressbar" style="font-size: 1rem
+              "
+                  [style.width.%]="item.base_stat" [attr.aria-valuenow]="item.base_stat" aria-valuemin="0"
+                  aria-valuemax="1000"><strong> {{item.base_stat}}</strong></div>
+              </div>
+            </ng-container> -->
+
+
+          </div>
 
         </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-12  col-xs-12" *ngIf="dataPokedex">
-          <div class="table table-borderless">
-            <table class="table  tableColor-{{dataSpecies.color.name}}">
 
-              <tr *ngIf="dataSpecies.evolves_from_species">
-                <th>
-                  Evolución
-                </th>
-                <td>
-                  <h4>
-                    <span class="badge bg-{{dataSpecies.color.name}}Type mb-2 me-2">{{dataSpecies.evolves_from_species.name}}</span>
-                  </h4>
-                </td>
-              </tr>
+
+        <div class="row justify-content-md-center mt-2">
+          <div class="col-12">
+            <h4 class="text-center">
+              <span class="badge bg-{{dataSpecies.color.name}}-type mt-2 mb-2 me-2">
+
+                EVOLUCIÓN</span>
+            </h4>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-md-center mt-2">
+          <div class="col-12">
+            <h4 class="text-center">
+              <span class="badge bg-{{dataSpecies.color.name}}-type mt-2 mb-2 me-2">
+
+                MOVIMIENTOS</span>
+            </h4>
+
+          </div>
+          <div class="table">
+            <table>
               <tr>
-                <th>
-                  Donde encontrar
-                </th>
-                <td>
-                  <h4>
-                    <span class="badge  bg-{{dataSpecies.color.name}}Type me-2"
-                    *ngFor="let tt of locations.names">{{tt.name}}</span>
-                  </h4>
-
-                </td>
+                <th></th>
               </tr>
-              <tr>
-                <th>Habilidades</th>
-                <td>
-                  <h4>
-                    <span class="badge  bg-{{dataSpecies.color.name}}Type me-2"
-                    *ngFor="let item of dataPokedex.abilities">{{item.ability.name}}</span>
-                  </h4>
-
-                </td>
-              </tr>
-              <tr>
-                <th>Habitat</th>
-                <td>
-                  <h4>
-                     <span
-                    class="badge me-2 bg-{{dataSpecies.color.name}}Type">{{dataSpecies.habitat.name}}</span>
-                  </h4>
-
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  Ataques
-                </th>
-
-              </tr>
-              <tr>
-                <td colspan="2">
-
-                  <a class=" mb-2" *ngFor="let item of dataPokedex.moves" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" style="cursor: pointer;" (click)="detailMove(item)">
-
-                    <span class="badge bg-{{dataSpecies.color.name}}Type me-2 ">{{item.move.name}}</span></a>
-                </td>
-              </tr>
-
-
             </table>
           </div>
-
-
-
-
-          <table>
-
-          </table>
-
-
         </div>
+
+
+
       </div>
-
-
 
     </div>
   </div>
-</div>
-<div class="row mt-2">
-  <button class="btn btn-outline-dark " [routerLink]="['/']">
-    <i class="fa fa-arrow-left"></i> Volver</button>
 </div>
 
 <!-- Modal -->
